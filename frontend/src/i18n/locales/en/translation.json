@@ -1,0 +1,105 @@
+{
+  "app": {
+    "name": "Fix Karachi",
+    "tagline": "Report. Track. Resolve.",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "home": "Home",
+    "report": "Report a Pothole",
+    "map": "View Map",
+    "admin": "Admin"
+  },
+  "home": {
+    "hero_title": "Help Fix Karachi's Roads",
+    "hero_subtitle": "Report potholes, track repairs, and make our city safer — one report at a time.",
+    "cta_report": "Report a Pothole",
+    "cta_map": "View All Reports",
+    "stats_total": "Total Reports",
+    "stats_resolved": "Resolved",
+    "stats_inprogress": "In Progress",
+    "stats_severity": "Avg. Severity"
+  },
+  "report": {
+    "title": "Report a Pothole",
+    "subtitle": "Your report helps prioritize road repairs in Karachi.",
+    "name_label": "Your Name (Optional)",
+    "name_placeholder": "Anonymous",
+    "contact_label": "Contact (Optional)",
+    "contact_placeholder": "Phone or email",
+    "description_label": "Description",
+    "description_placeholder": "Describe the pothole — size, depth, road conditions...",
+    "severity_label": "Severity",
+    "severity_1": "Minor — Small crack or surface damage",
+    "severity_2": "Moderate — Noticeable pothole, affects driving",
+    "severity_3": "Severe — Large, dangerous, vehicle damage risk",
+    "address_label": "Nearest Address / Landmark",
+    "address_placeholder": "e.g. Near KFC, Clifton Block 5",
+    "location_label": "Location",
+    "location_detect": "Detect My Location",
+    "location_detecting": "Detecting location...",
+    "location_detected": "Location detected!",
+    "location_error": "Could not detect location. Please try again.",
+    "location_coords": "Coordinates",
+    "images_label": "Photos of the Pothole",
+    "images_hint": "Upload 1–5 clear photos (max 5MB each)",
+    "images_selected": "{{count}} photo(s) selected",
+    "submit": "Submit Report",
+    "submitting": "Submitting...",
+    "success_title": "Report Submitted!",
+    "success_message": "Thank you for helping fix Karachi. Your report has been recorded.",
+    "cluster_note": "A cluster of reports was detected nearby — your report increased the priority score!"
+  },
+  "status": {
+    "Reported": "Reported",
+    "In Progress": "In Progress",
+    "Resolved": "Resolved",
+    "Flagged": "Flagged"
+  },
+  "severity": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "label": "Severity Score"
+  },
+  "admin": {
+    "login_title": "Admin Login",
+    "login_subtitle": "Fix Karachi Management Portal",
+    "email": "Email Address",
+    "password": "Password",
+    "login_btn": "Login",
+    "logging_in": "Logging in...",
+    "logout": "Logout",
+    "dashboard_title": "Dashboard",
+    "heatmap_title": "Pothole Heatmap",
+    "reports_title": "All Reports",
+    "filter_status": "Filter by Status",
+    "filter_all": "All",
+    "col_id": "ID",
+    "col_location": "Location",
+    "col_severity": "Severity",
+    "col_status": "Status",
+    "col_date": "Date",
+    "col_actions": "Actions",
+    "action_resolve": "Resolve",
+    "action_progress": "In Progress",
+    "action_flag": "Flag",
+    "action_delete": "Delete",
+    "confirm_delete": "Are you sure you want to permanently delete this report?",
+    "no_reports": "No reports found.",
+    "update_success": "Status updated successfully.",
+    "delete_success": "Report deleted."
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Network error. Check your connection.",
+    "location_denied": "Location access was denied. Please enable it in your browser settings.",
+    "file_size": "Each file must be under 5MB.",
+    "file_type": "Only image files (JPG, PNG, WEBP) are allowed.",
+    "required": "This field is required."
+  },
+  "language": {
+    "toggle": "اردو",
+    "current": "English"
+  }
+}

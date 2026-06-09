@@ -1,0 +1,105 @@
+{
+  "app": {
+    "name": "فکس کراچی",
+    "tagline": "رپورٹ کریں۔ ٹریک کریں۔ حل کریں۔",
+    "loading": "لوڈ ہو رہا ہے..."
+  },
+  "nav": {
+    "home": "ہوم",
+    "report": "گڑھا رپورٹ کریں",
+    "map": "نقشہ دیکھیں",
+    "admin": "ایڈمن"
+  },
+  "home": {
+    "hero_title": "کراچی کی سڑکیں ٹھیک کرنے میں مدد کریں",
+    "hero_subtitle": "گڑھے رپورٹ کریں، مرمت ٹریک کریں، اور ہمارے شہر کو محفوظ بنائیں — ایک رپورٹ ایک قدم۔",
+    "cta_report": "گڑھا رپورٹ کریں",
+    "cta_map": "تمام رپورٹیں دیکھیں",
+    "stats_total": "کل رپورٹیں",
+    "stats_resolved": "حل شدہ",
+    "stats_inprogress": "جاری",
+    "stats_severity": "اوسط شدت"
+  },
+  "report": {
+    "title": "گڑھا رپورٹ کریں",
+    "subtitle": "آپ کی رپورٹ کراچی میں سڑک کی مرمت کو ترجیح دینے میں مدد کرتی ہے۔",
+    "name_label": "آپ کا نام (اختیاری)",
+    "name_placeholder": "گمنام",
+    "contact_label": "رابطہ (اختیاری)",
+    "contact_placeholder": "فون یا ای میل",
+    "description_label": "تفصیل",
+    "description_placeholder": "گڑھے کی تفصیل بتائیں — سائز، گہرائی، سڑک کی حالت...",
+    "severity_label": "شدت",
+    "severity_1": "معمولی — چھوٹی دراڑ یا سطح کا نقصان",
+    "severity_2": "معتدل — واضح گڑھا، ڈرائیونگ پر اثر",
+    "severity_3": "شدید — بڑا، خطرناک، گاڑی کو نقصان کا خطرہ",
+    "address_label": "قریبی پتہ / نشاندہی",
+    "address_placeholder": "مثلاً: کے ایف سی کے قریب، کلفٹن بلاک 5",
+    "location_label": "مقام",
+    "location_detect": "میرا مقام تلاش کریں",
+    "location_detecting": "مقام تلاش ہو رہا ہے...",
+    "location_detected": "مقام مل گیا!",
+    "location_error": "مقام تلاش نہیں ہو سکا۔ دوبارہ کوشش کریں۔",
+    "location_coords": "نقاط",
+    "images_label": "گڑھے کی تصاویر",
+    "images_hint": "1 سے 5 واضح تصاویر اپلوڈ کریں (ہر ایک 5MB سے کم)",
+    "images_selected": "{{count}} تصویر(یں) منتخب",
+    "submit": "رپورٹ جمع کریں",
+    "submitting": "جمع ہو رہی ہے...",
+    "success_title": "رپورٹ جمع ہو گئی!",
+    "success_message": "کراچی کو ٹھیک کرنے میں مدد کا شکریہ۔ آپ کی رپورٹ محفوظ ہو گئی ہے۔",
+    "cluster_note": "قریب میں رپورٹوں کا جھرمٹ ملا — آپ کی رپورٹ نے ترجیحی اسکور بڑھا دیا!"
+  },
+  "status": {
+    "Reported": "رپورٹ ہوا",
+    "In Progress": "جاری ہے",
+    "Resolved": "حل شدہ",
+    "Flagged": "نشان زد"
+  },
+  "severity": {
+    "low": "کم",
+    "medium": "معتدل",
+    "high": "زیادہ",
+    "label": "شدت اسکور"
+  },
+  "admin": {
+    "login_title": "ایڈمن لاگ ان",
+    "login_subtitle": "فکس کراچی مینجمنٹ پورٹل",
+    "email": "ای میل پتہ",
+    "password": "پاس ورڈ",
+    "login_btn": "لاگ ان",
+    "logging_in": "لاگ ان ہو رہے ہیں...",
+    "logout": "لاگ آؤٹ",
+    "dashboard_title": "ڈیش بورڈ",
+    "heatmap_title": "گڑھوں کا ہیٹ میپ",
+    "reports_title": "تمام رپورٹیں",
+    "filter_status": "حالت کے مطابق فلٹر",
+    "filter_all": "سب",
+    "col_id": "شناخت",
+    "col_location": "مقام",
+    "col_severity": "شدت",
+    "col_status": "حالت",
+    "col_date": "تاریخ",
+    "col_actions": "اقدامات",
+    "action_resolve": "حل کریں",
+    "action_progress": "جاری کریں",
+    "action_flag": "نشان لگائیں",
+    "action_delete": "حذف کریں",
+    "confirm_delete": "کیا آپ واقعی اس رپورٹ کو مستقل حذف کرنا چاہتے ہیں؟",
+    "no_reports": "کوئی رپورٹ نہیں ملی۔",
+    "update_success": "حالت کامیابی سے اپ ڈیٹ ہوئی۔",
+    "delete_success": "رپورٹ حذف ہو گئی۔"
+  },
+  "errors": {
+    "generic": "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔",
+    "network": "نیٹ ورک خرابی۔ اپنا کنیکشن چیک کریں۔",
+    "location_denied": "مقام تک رسائی سے انکار ہوا۔ براہ کرم براؤزر سیٹنگز میں اسے فعال کریں۔",
+    "file_size": "ہر فائل 5MB سے کم ہونی چاہیے۔",
+    "file_type": "صرف تصویری فائلیں (JPG, PNG, WEBP) قابل قبول ہیں۔",
+    "required": "یہ خانہ ضروری ہے۔"
+  },
+  "language": {
+    "toggle": "English",
+    "current": "اردو"
+  }
+}
