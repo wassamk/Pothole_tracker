@@ -1,6 +1,7 @@
 // src/pages/admin/AdminLoginPage.tsx
 import { useState, type ChangeEvent, type FormEvent } from 'react';
-import { useNavigate, useLocation, type Location } from 'react-router-dom';
+// 1. Added Link to the import here:
+import { useNavigate, useLocation, Link, type Location } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import toast from 'react-hot-toast';
 import { useAuth } from '@/context/AuthContext';
@@ -75,6 +76,16 @@ const AdminLoginPage = () => {
         <div className="login-footer">
           <p>Default: admin@fixkarachi.pk / Admin@1234</p>
           <p>Run <code>pnpm seed</code> to create the admin user</p>
+          
+          {/* 2. Added the Home button right here */}
+          <div style={{ marginTop: '1.5rem' }}>
+            <Link 
+              to="/" 
+              style={{ color: '#60a5fa', textDecoration: 'none', fontSize: '0.875rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+            >
+              <span>&larr;</span> Back to Home
+            </Link>
+          </div>
         </div>
       </div>
     </div>

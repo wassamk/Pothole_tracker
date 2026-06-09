@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet';
 import { useTranslation } from 'react-i18next';
+// @ts-expect-error
 import 'leaflet/dist/leaflet.css';
 import { potholeApi } from '@/utils/api';
 import StatusBadge from '@/components/common/StatusBadge';
@@ -31,6 +32,17 @@ const FitBounds = ({ potholes }: { potholes: Pothole[] }) => {
   return null;
 };
 
+// 1. NEW COMPONENT: Controls the camera zooming/flying to a specific location
+const FlyToPothole = ({ target }: { target: LatLngTuple | null }) => {
+  const map = useMap();
+  useEffect(() => {
+    if (target) {
+      map.flyTo(target, 18, { duration: 1.5 }); // Zoom level 18, 1.5s animation
+    }
+  }, [target, map]);
+  return null;
+};
+
 interface Props {
   height?: string;
 }
@@ -44,6 +56,9 @@ const PotholeMap = ({ height = '500px' }: Props) => {
   const [potholes, setPotholes] = useState<Pothole[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<PotholeStatus | 'all'>('all');
+  
+  // 2. NEW STATE: Track the currently focused pothole
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const fetch = async () => {
@@ -52,6 +67,7 @@ const PotholeMap = ({ height = '500px' }: Props) => {
         const params = filter !== 'all' ? { status: filter, limit: 500 } : { limit: 500 };
         const res = await potholeApi.getAll(params);
         setPotholes(res.data.data);
+        setActiveIndex(null); // Reset navigation when filters change
       } catch {
         // map still renders empty
       } finally {
@@ -60,6 +76,17 @@ const PotholeMap = ({ height = '500px' }: Props) => {
     };
     fetch();
   }, [filter]);
+
+  // 3. NEW FUNCTIONS: Handle Previous/Next logic
+  const handlePrev = () => {
+    if (potholes.length === 0) return;
+    setActiveIndex((prev) => (prev === null || prev === 0 ? potholes.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    if (potholes.length === 0) return;
+    setActiveIndex((prev) => (prev === null || prev === potholes.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <div className="map-wrapper">
@@ -76,7 +103,25 @@ const PotholeMap = ({ height = '500px' }: Props) => {
         <span className="map-count">{potholes.length} reports</span>
       </div>
 
-      <div style={{ height, width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', height, width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
+        
+        {/* 4. NEW UI: The Next/Prev Navigation Overlay */}
+        <div style={{
+          position: 'absolute', top: '10px', right: '10px', zIndex: 1000, 
+          display: 'flex', gap: '8px', background: 'rgba(15, 23, 42, 0.85)', 
+          padding: '8px 12px', borderRadius: '8px', alignItems: 'center'
+        }}>
+          <button onClick={handlePrev} className="filter-btn" style={{ margin: 0, padding: '4px 12px' }}>
+            &larr; Prev
+          </button>
+          <span style={{ color: '#94a3b8', fontSize: '14px', minWidth: '60px', textAlign: 'center' }}>
+            {activeIndex !== null ? `${activeIndex + 1} / ${potholes.length}` : 'Explore'}
+          </span>
+          <button onClick={handleNext} className="filter-btn" style={{ margin: 0, padding: '4px 12px' }}>
+            Next &rarr;
+          </button>
+        </div>
+
         <MapContainer
           center={KARACHI_CENTER}
           zoom={12}
@@ -87,17 +132,37 @@ const PotholeMap = ({ height = '500px' }: Props) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {!loading && <FitBounds potholes={potholes} />}
+          
+          {/* 5. NEW: Add the FlyTo component */}
+          <FlyToPothole 
+            target={
+              activeIndex !== null && potholes[activeIndex]
+                ? [potholes[activeIndex].location.coordinates[1], potholes[activeIndex].location.coordinates[0]]
+                : null
+            } 
+          />
 
-          {potholes.map((p) => {
+          {potholes.map((p, index) => {
             const lat = p.location.coordinates[1];
             const lng = p.location.coordinates[0];
             const color = markerColor(p.severityScore);
+            
+            // Highlight the active marker visually if it is currently selected
+            const isActive = index === activeIndex;
+
             return (
               <CircleMarker
                 key={p._id}
                 center={[lat, lng]}
                 radius={Math.max(6, p.severityScore / 6)}
-                pathOptions={{ color, fillColor: color, fillOpacity: 0.7, weight: 2 }}
+                pathOptions={{ 
+                  color: isActive ? '#fff' : color, 
+                  fillColor: color, 
+                  fillOpacity: isActive ? 1 : 0.7, 
+                  weight: isActive ? 4 : 2 
+                }}
+                // Allow users to click a dot to jump to that specific index in the cycle
+                eventHandlers={{ click: () => setActiveIndex(index) }}
               >
                 <Popup>
                   <div className="map-popup">

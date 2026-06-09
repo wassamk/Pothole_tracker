@@ -22,7 +22,7 @@ const CLUSTER_RADIUS_METERS = 50;
 const CLUSTER_SCORE_BONUS_PER_REPORT = 5;
 
 /**
- * Detects nearby pothole reports within 50 meters using MongoDB's $near operator.
+ * Detects nearby pothole reports within 50 meters using MongoDB's $geoWithin operator.
  * Returns the count of existing reports in the cluster.
  *
  * @param {number} longitude
@@ -33,12 +33,12 @@ const CLUSTER_SCORE_BONUS_PER_REPORT = 5;
 export const detectCluster = async (longitude, latitude, excludeId = null) => {
   const query = {
     location: {
-      $near: {
-        $geometry: {
-          type: 'Point',
-          coordinates: [longitude, latitude],
-        },
-        $maxDistance: CLUSTER_RADIUS_METERS,
+      $geoWithin: {
+        // $centerSphere uses radians. Divide meters by Earth's equatorial radius in meters (6378137)
+        $centerSphere: [
+          [longitude, latitude],
+          CLUSTER_RADIUS_METERS / 6378137,
+        ],
       },
     },
     status: { $ne: 'Resolved' }, // Only count active reports
